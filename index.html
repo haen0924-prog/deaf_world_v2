@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>웰컴 투 데프 월드 | Welcome to Deaf World</title>
+<title>웰컴 투 데프 월드 | Welcome to the Deaf World</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Nanum+Pen+Script&family=Jua&display=swap" rel="stylesheet">
@@ -285,10 +285,11 @@
   .timeline .title { font-weight: 900; font-size: 22px; margin-bottom: 6px; }
   .timeline .desc { margin: 0; color: var(--muted); }
   /* ================= 캠프 포스터 + 글 ================= */
-  .camp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-bottom: 56px; }
+  .camp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; margin-bottom: 56px; }
   .camp-poster .poster-wrap { max-width: none; margin: 0; }
   .camp-text .sec-desc { margin: 0 0 28px; font-family: "Jua", "Noto Sans KR", sans-serif; font-size: 28px; line-height: 1.4; font-weight: 400; color: var(--ink); max-width: none; }
-  .camp-text .info-list { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 0; }
+  .camp-text { display: flex; flex-direction: column; }
+  .camp-text .info-list { display: grid; grid-template-columns: 1fr; gap: 14px; margin: auto 0 0; }
   .camp-text .info-item { border: none; padding: 0; background: none; text-align: left; display: flex; align-items: center; gap: 16px; }
   .camp-text .info-item .label { display: inline-flex; align-items: center; gap: 6px; font-family: "Noto Sans KR", sans-serif; font-size: 19px; font-weight: 900; color: var(--ink); background: var(--chip, var(--yellow)); padding: 6px 16px; border-radius: 999px; margin: 0; flex: 0 0 auto; min-width: 104px; justify-content: space-between; white-space: nowrap; }
   .camp-text .info-item .label::after { content: "→"; font-weight: 900; color: var(--red); }
@@ -617,12 +618,12 @@
       <a class="hotspot" href="#book-booth" style="left:45%; top:67%;">
         <span class="l-ko">부스</span><span class="l-en">Booth</span><span class="hs-video"><video src="videos/sign-booth.mp4" muted loop playsinline preload="metadata"></video></span></a>
       <a class="hotspot" href="#book-slam-performance" style="left:75%; top:80%;">
-        <span class="l-ko"><span class="nb">슬램·공연</span></span><span class="l-en">Slam & Performance</span><span class="hs-video"><video src="videos/sign-performance.mp4" muted loop playsinline preload="metadata"></video></span></a>
+        <span class="l-ko"><span class="nb">슬램·공연</span></span><span class="l-en">Performance&Slam</span><span class="hs-video"><video src="videos/sign-performance.mp4" muted loop playsinline preload="metadata"></video></span></a>
     </div>
 
     <div class="camp-text">
         <p class="sec-desc l-ko">서로 다른 경험과 감각이 만나면<br><span class="uline">어떤 이야기가 만들어질까요?</span><br><br>장애예술인이 창작과 교류의 주체가 되어,<br>시민과 함께 새로운 예술적 경험을<br>만들어 가는 <span class="uline">참여형 문화 예술 축제</span>입니다.</p>
-    <p class="sec-desc l-en">What kind of stories will emerge when different experiences and senses meet? Modu Story Camp is a participatory arts festival in which disabled artists lead creation and exchange, creating new artistic experiences together with citizens.</p>
+    <p class="sec-desc l-en">What kind of stories will emerge when different experiences and senses meet? Modu-Story Camp is a participatory arts festival in which disabled artists lead creation and exchange, creating new artistic experiences together with citizens.</p>
         <div class="info-list">
     <div class="info-item">
       <div class="label l-ko">일시</div>
@@ -664,7 +665,7 @@
       <li class="l-en">
         <div class="date">Oct 31 <span class="nb">(Sat)</span></div>
         <div>
-          <div class="title">Welcome to Deaf World</div>
+          <div class="title">Welcome to the Deaf World</div>
           <p class="desc">An invitation to the Deaf world, where sign language comes alive. Deaf-run booths, exhibitions, workshops, performances and slams.</p>
         </div>
       </li>
@@ -728,7 +729,7 @@
         <li>프로그램별 상세 일정과 참여 방법은 <strong>모두예술극장 공식 홈페이지 및 인스타그램</strong>에서 확인해 주세요.</li>
       </ul>
       <ul class="l-en">
-        <li>All Welcome to Deaf World exhibitions, workshops, slams and performances are on-site registration.</li>
+        <li>All Welcome to the Deaf World exhibitions, workshops, slams and performances are on-site registration.</li>
         <li>Booth experiences and products may change depending on on-site conditions.</li>
         <li>For detailed schedules and how to participate, check the official Modu Art Theater website and Instagram.</li>
       </ul>
@@ -826,7 +827,7 @@
     <span class="kicker l-en">01 EXHIBITION</span>
     
     <h2 class="sec-title l-ko">〈웰컴 투 데프 월드〉 전시</h2>
-    <h2 class="sec-title l-en">Welcome to Deaf World Exhibitions</h2>
+    <h2 class="sec-title l-en">Welcome to the Deaf World Exhibitions</h2>
     
     <p class="sec-desc l-ko">일시 10. <span class="nb">31.(토)</span> 10:00~17:30<span class="dot"> · </span><br class="mbr">장소 모두예술극장 모두스튜디오<br>손과 몸의 움직임이 문자와 그림, 문학이 되는 순간을 만나 보세요.</p>
     <p class="sec-desc l-en">Oct 31 <span class="nb">(Sat)</span> 10:00–17:30 · Modu Studio, Modu Art Theater<br>Experience the moment when movements of hands and body become writing, painting and literature.</p>
@@ -838,7 +839,7 @@
         <div>
           <span class="ws-num l-ko">전시 1</span><span class="ws-num l-en">Exhibition 1</span>
           <h3 class="l-ko">수어문자 전시 및 해설</h3>
-          <h3 class="l-en">Sign Writing Exhibition & Guided Commentary</h3>
+          <h3 class="l-en">SignWriting Exhibition & Guided Commentary</h3>
           
           <p class="sub l-ko">김인선</p><p class="sub l-en">Kim In-sun</p>
           <p class="keyline l-ko">한국어 음성 언어를 한글로 기록하듯, <span class="nb">수어문자(SignWriting)로</span> 기록한 한국수어를 소개합니다.</p>
@@ -880,7 +881,7 @@
           <h3 class="l-ko">수어문학 전시</h3>
           <h3 class="l-en">Sign Literature Exhibition</h3>
           
-          <p class="sub l-ko">수어민들레</p><p class="sub l-en">Sueo Mindeulle</p>
+          <p class="sub l-ko">수어민들레</p><p class="sub l-en">Sign Language Dandelion</p>
           <p class="keyline l-ko">농인의 언어인 수어로 창작된 다양한 수어문학 작품을 만나는 시간입니다.</p>
           <p class="keyline l-en">A time to meet diverse sign literature works created in sign language, the language of Deaf people.</p>
           
@@ -904,7 +905,7 @@
     <span class="kicker l-en">02 WORKSHOP</span>
     
     <h2 class="sec-title l-ko">〈웰컴 투 데프 월드〉 워크숍</h2>
-    <h2 class="sec-title l-en">Welcome to Deaf World Workshops</h2>
+    <h2 class="sec-title l-en">Welcome to the Deaf World Workshops</h2>
     
     <p class="sec-desc l-ko">수어로 이야기하고, 몸으로 표현하고, 그림으로 생각을 나누는 참여형 워크숍입니다. 모든 워크숍은 현장 접수로 진행됩니다.</p>
     <p class="sec-desc l-en">Participatory workshops where you tell stories in sign language, express with your body, and share ideas through drawing. All workshops are on-site registration.</p>
@@ -926,7 +927,7 @@
           <p class="l-en">CODA User Manual is a participatory workshop where CODA <span class="nb">(Children of Deaf Adults)</span> look back on their experiences and identity, share stories with one another, and discover what makes each of them special. Through play and self-expression activities, they see themselves anew, create objects and a user manual that express who they are, and reflect on their personality, emotions and ways of forming relationships.</p>
           
           <div class="meta l-ko"><strong>시간</strong> 10:30, 13:30<span class="dot"> · </span><br class="mbr"><strong>장소</strong> 모두예술극장 연습실 1</div>
-          <div class="meta l-en">Time: 10:30, 13:30<span class="dot"> · </span><br class="mbr">Venue: Modu Art Theater Practice Room 1</div>
+          <div class="meta l-en">Time: 10:30, 13:30<span class="dot"> · </span><br class="mbr">Venue: Practice Room 1</div>
           
         </div>
         <div class="img-box">
@@ -942,7 +943,7 @@
           <h3 class="l-en">Deaf Perspectives Through Painting</h3>
           
           <p class="sub l-ko"><span class="nb">De'VIA(데비아)</span> 시각예술 체험 · 변강석</p>
-          <p class="sub l-en">De'VIA Visual Art Experience · Byeon Gang-seok</p>
+          <p class="sub l-en">De'VIA Visual Art Experience · Byun Kang suk</p>
           
           <p class="keyline l-ko">데비아에 대한 이해와 농인의 다양한 시선을 그림으로 나눕니다.</p>
           <p class="keyline l-en">Understanding De'VIA and the many perspectives of Deaf people, expressed through drawing.</p>
@@ -951,7 +952,7 @@
           <p class="l-en">De'VIA is an art movement that expresses Deaf language, culture, identity and life experience through visual art. In this workshop, we explore the history and representative works of De'VIA, which is not yet well known in Korea, and express your own experiences and thoughts through drawing. You don't need to be good at drawing. Deaf and hearing participants alike can share different perspectives and experiences through art.</p>
           
           <div class="meta l-ko"><strong>시간</strong> 14:30, 15:30<span class="dot"> · </span><br class="mbr"><strong>장소</strong> 모두예술극장 연습실 1</div>
-          <div class="meta l-en">Time: 14:30, 15:30<span class="dot"> · </span><br class="mbr">Venue: Modu Art Theater Practice Room 1</div>
+          <div class="meta l-en">Time: 14:30, 15:30<span class="dot"> · </span><br class="mbr">Venue: Practice Room 1</div>
           
         </div>
         <div class="img-box">
@@ -974,7 +975,7 @@
           <p class="l-en">Going beyond the boundaries of language, age and physical ability, this community participatory art program uses body expression, gestures and sign language to communicate and create a dance together. Rather than perfecting a dance, the focus is on the process where each participant freely expresses their thoughts and emotions through hand gestures and body movement. Each participant offers a unique movement, and these are linked in relay form to create one complete team dance.</p>
           
           <div class="meta l-ko"><strong>시간</strong> 11:30, 14:30<span class="dot"> · </span><br class="mbr"><strong>장소</strong> 모두예술극장 연습실 2</div>
-          <div class="meta l-en">Time: 11:30, 14:30<span class="dot"> · </span><br class="mbr">Venue: Modu Art Theater Practice Room 2</div>
+          <div class="meta l-en">Time: 11:30, 14:30<span class="dot"> · </span><br class="mbr">Venue: Practice Room 2</div>
           
         </div>
         <div class="img-box">
@@ -997,7 +998,7 @@
           <p class="l-en">How many different stories can be told with only hands, body movement and facial expression? This workshop explores the features and differences of VV <span class="nb">(Visual Vernacular),</span> sign poetry <span class="nb">(Poesie)</span> and Deaf Slam, and introduces various sign-based forms of artistic expression. From the origins and history of VV to how each genre builds expression, emotion and facial expression, you will understand through example videos, then practice and experience directly.</p>
           
           <div class="meta l-ko"><strong>시간</strong> 10:30, 15:30<span class="dot"> · </span><br class="mbr"><strong>장소</strong> 모두예술극장 연습실 2</div>
-          <div class="meta l-en">Time: 10:30, 15:30<span class="dot"> · </span><br class="mbr">Venue: Modu Art Theater Practice Room 2</div>
+          <div class="meta l-en">Time: 10:30, 15:30<span class="dot"> · </span><br class="mbr">Venue: Practice Room 2</div>
           
         </div>
         <div class="img-box">
@@ -1019,8 +1020,8 @@
           <p class="l-ko">수어도 문자로 기록할 수 있을까요? 언어와 문자의 관계를 살펴보고, 수어를 기록하는 체계인 수어문자에 대해 알아봅니다. 손 모양, 손 방향, 손 위치, 움직임, 비수지기호 등 수어문자의 기본 구조를 익히고, 실제 수어문자를 가볍게 읽어봅니다. 마지막으로 자신의 수어이름이나 단어를 직접 표기해 보며, 보이는 언어를 문자로 기록하는 즐거움을 경험해 봅니다.</p>
           <p class="l-en">Can sign language be recorded in writing? Looking at the relationship between language and writing, you will learn about SignWriting, a system for recording sign language. You will learn the basic structure of SignWriting — handshape, hand orientation, hand location, movement, and non-manual signals — and read real SignWriting lightly. Finally, you will write your own sign name or a word, and experience the joy of recording a visible language in writing.</p>
           
-          <div class="meta l-ko"><strong>일시 및 장소</strong><br>10. <span class="nb">31.(토)</span> 11:30 · 연습실 1<br>10. <span class="nb">31.(토)</span> 13:30 · 연습실 2</div>
-          <div class="meta l-en"><strong>Date & Venue</strong><br>Oct 31 <span class="nb">(Sat)</span> 11:30 · Practice Room 1<br>Oct 31 <span class="nb">(Sat)</span> 13:30 · Practice Room 2</div>
+          <div class="meta l-ko"><strong>시간 · 장소</strong><br>11:30(연습실 1), 13:30(연습실 2)</div>
+          <div class="meta l-en"><strong>Time · Venue</strong><br>11:30(Practice Room 1), 13:30(Practice Room 2)</div>
           
         </div>
         <div class="img-box">
@@ -1039,7 +1040,7 @@
     <span class="kicker l-en">03 BOOTH</span>
     
     <h2 class="sec-title l-ko">〈웰컴 투 데프 월드〉 부스</h2>
-    <h2 class="sec-title l-en">Welcome to Deaf World Booths</h2>
+    <h2 class="sec-title l-en">Welcome to the Deaf World Booths</h2>
     
     <p class="sec-desc l-ko">농문화와 수어를 기반으로 활동하는 <strong>12개 팀</strong>이 한자리에 모입니다. 굿즈를 구경하고, 직접 체험하고, 이야기를 나누며 데프 문화를 다양한 방식으로 만나 보세요.<br>일시 10. <span class="nb">31.(토)</span> 10:00~17:30<span class="dot"> · </span><br class="mbr">장소 모두예술극장 <strong>모두라운지</strong></p>
     <p class="sec-desc l-en">Twelve teams active in Deaf culture and sign language come together in one place. Check out merchandise, try things out for yourself, and experience Deaf culture in many ways.<br>Oct 31 <span class="nb">(Sat)</span> 10:00–17:30 · Modu Lounge, Modu Art Theater</p>
@@ -1053,9 +1054,9 @@
       <div class="card">
         <span class="booth-no">BOOTH 01</span>
         <h3 class="l-ko">소온우웃다 : 손으로 말하고, 손으로 웃다</h3>
-        <h3 class="l-en">Soon Ut-da: Speak with Hands, Laugh with Hands</h3>
+        <h3 class="l-en">SOONWOOUTDA × SONDOLDOL : Speak with Hands, Smile Together</h3>
         
-        <p class="sub l-ko">소온우웃다</p><p class="sub l-en">Soon-ou-utda</p>
+        <p class="sub l-ko">소온우웃다</p><p class="sub l-en">SOONWOOUTDA</p>
         <p class="l-ko">농인 엄마이자 디자이너인 남다영이 운영하는 수어 라이프스타일 브랜드입니다. 수어와 지문자를 일상 속 디자인으로 풀어내어 포스터, 엽서, 의류 등 다양한 제품을 선보입니다.</p>
         <p class="l-en">A sign language lifestyle brand run by Deaf mother and designer Nam Da-young. It turns sign language and fingerspelling into everyday design for posters, postcards, apparel and more.</p>
         
@@ -1064,9 +1065,9 @@
       <div class="card">
         <span class="booth-no">BOOTH 02</span>
         <h3 class="l-ko">농인의 여행을 잇다, 데프누리</h3>
-        <h3 class="l-en">Connecting Deaf Travel: Deafnuri</h3>
+        <h3 class="l-en">Connecting Deaf Travelers, DeafNuri</h3>
         
-        <p class="sub l-ko">데프누리 주식회사</p><p class="sub l-en">Deafnuri Co., Ltd.</p>
+        <p class="sub l-ko">데프누리 주식회사</p><p class="sub l-en">DeafNuri</p>
         <p class="l-ko">농인이 자신의 언어로 여행 정보를 접하고 다양한 여행을 경험할 수 있도록 맞춤형 관광 서비스와 콘텐츠를 만드는 관광 플랫폼입니다. 이번 부스에서는 데프누리의 여행 이야기와 굿즈를 만나볼 수 있습니다.</p>
         <p class="l-en">A tourism platform creating customized travel services and content so Deaf people can access travel information in their own language and enjoy diverse trips. At this booth, you can meet Deafnuri's travel stories and merchandise.</p>
         
@@ -1086,9 +1087,9 @@
       <div class="card">
         <span class="booth-no">BOOTH 04</span>
         <h3 class="l-ko">수다람툰 굿즈샵</h3>
-        <h3 class="l-en">Sudaram Toon Goods Shop</h3>
+        <h3 class="l-en">SUDARAM Merch Shop</h3>
         
-        <p class="sub l-ko">수다람</p><p class="sub l-en">Sudaram</p>
+        <p class="sub l-ko">수다람</p><p class="sub l-en">SUDARAM</p>
         <p class="l-ko">수어와 농문화를 바탕으로, 농인으로서 마주하는 일상과 생각을 그리는 작가 수다람입니다. 직접 디자인하고 정성껏 제작한 수다람툰의 이야기를 담은 <span class="nb">굿즈(수어포스터, 스티커 등)를</span> 만나보세요.</p>
         <p class="l-en">Artist Sudaram draws everyday life and thoughts as a Deaf person, rooted in sign language and Deaf culture. Check out goods featuring the stories of Sudaram Toon, designed and made with care, such as sign language posters and stickers.</p>
         
@@ -1097,18 +1098,18 @@
       <div class="card">
         <span class="booth-no">BOOTH 05</span>
         <h3 class="l-ko">비베이크 구움과자 판매 부스</h3>
-        <h3 class="l-en">Bevake Baked Goods Stand</h3>
+        <h3 class="l-en">BeeBake Baked Goods Booth</h3>
         
-        <p class="sub l-ko">비베이크</p><p class="sub l-en">Bevake</p>
+        <p class="sub l-ko">비베이크</p><p class="sub l-en">BeeBake</p>
         <p class="l-ko">6년차 홈베이커로, 다양한 구움과자와 디저트를 직접 만들고 있습니다. 이번 행사에서는 휘낭시에, 쿠키 등 수제 구움과자를 판매할 예정입니다.</p>
-        <p class="l-en">A home baker with six years of experience, making a variety of baked goods and desserts by hand. For this event, Bevake will sell handmade baked goods including financiers and cookies.</p>
+        <p class="l-en">A home baker with six years of experience, making a variety of baked goods and desserts by hand. For this event, BeeBake will sell handmade baked goods including financiers and cookies.</p>
         
       </div>
 
       <div class="card">
         <span class="booth-no">BOOTH 06</span>
         <h3 class="l-ko">제스처네일, 예쁜 손끝으로 전하는 이야기</h3>
-        <h3 class="l-en">Gesture Nail: Stories Told Through Beautiful Fingertips</h3>
+        <h3 class="l-en">Gesture Nail, Stories Told Through Beautiful Fingertips</h3>
         
         <p class="sub l-ko">제스처네일</p><p class="sub l-en">Gesture Nail</p>
         <p class="l-ko">농인네일리스트 2인이 함께 운영하는 네일샵입니다. 케어 원컬러 시술을 직접 경험하실 수 있으며, 수제 핸드크림 등 손관리 제품도 만나볼 수 있습니다. 부스를 방문해주신 관람객 특별 할인쿠폰도 함께 제공해 드립니다.</p>
@@ -1119,7 +1120,7 @@
       <div class="card">
         <span class="booth-no">BOOTH 07</span>
         <h3 class="l-ko">꽃으로 잇는 우리</h3>
-        <h3 class="l-en">Connecting Us Through Flowers</h3>
+        <h3 class="l-en">Connected by Flowers</h3>
         
         <p class="sub l-ko">봉주르플라워</p><p class="sub l-en">Bonjour Flower</p>
         <p class="l-ko">꽃과 수어로 사람과 사람을 잇는 공간입니다. 꽃 선물에 담긴 다양한 의미를 수어로 배우고, 직접 꽃을 만들며 마음을 나누는 특별한 경험을 함께합니다.</p>
@@ -1130,9 +1131,9 @@
       <div class="card">
         <span class="booth-no">BOOTH 08</span>
         <h3 class="l-ko">수어민들레</h3>
-        <h3 class="l-en">Sueo Mindeulle</h3>
+        <h3 class="l-en">Sign Language Dandelion</h3>
         
-        <p class="sub l-ko">수어민들레</p><p class="sub l-en">Sueo Mindeulle</p>
+        <p class="sub l-ko">수어민들레</p><p class="sub l-en">Sign Language Dandelion</p>
         <p class="l-ko">수어의 아름다움과 즐거움을 나누는 <span class="nb">판매·체험</span> 부스입니다. <span class="nb">국제수화·수어</span> 카드 게임, 배지, 티셔츠 등 다양한 굿즈를 만나고 수어 카드 게임도 직접 체험할 수 있습니다.</p>
         <p class="l-en">A sales and experience booth that shares the beauty and joy of sign language. Find goods such as the International Sign and sign language card game, badges and T-shirts, and try the sign language card game yourself.</p>
         
@@ -1141,7 +1142,7 @@
       <div class="card">
         <span class="booth-no">BOOTH 09</span>
         <h3 class="l-ko">농인의 자녀인 <span class="nb">코다(CODA)의</span> 모임, 코다코리아</h3>
-        <h3 class="l-en">CODA Korea, a Gathering of Children of Deaf Adults</h3>
+        <h3 class="l-en">CODA Korea, a network and organization for CODA.</h3>
         
         <p class="sub l-ko">코다코리아</p><p class="sub l-en">CODA Korea</p>
         <p class="l-ko">농인의 자녀인 코다를 연결하고 그들의 이야기를 전하는 비영리단체입니다. 코다의 경험과 정체성을 담은 도서 전시 및 판매, 리플릿과 스티커를 만나볼 수 있습니다.</p>
@@ -1163,9 +1164,9 @@
       <div class="card">
         <span class="booth-no">BOOTH 11</span>
         <h3 class="l-ko">한국농아청년회</h3>
-        <h3 class="l-en">Korean Deaf Youth Association</h3>
+        <h3 class="l-en">Korea Association of the Deaf Youth (KADY)</h3>
         
-        <p class="sub l-ko">한국농아청년회</p><p class="sub l-en">Korean Deaf Youth Association</p>
+        <p class="sub l-ko">한국농아청년회</p><p class="sub l-en">Korea Association of the Deaf Youth</p>
         <p class="l-ko">농청년이 주체가 되어 권익 증진과 사회참여 확대를 위해 활동하는 청년단체입니다. 국내외 교류와 문화, 교육 활동을 통해 농청소년과 농청년의 성장과 연대를 이어가고 있습니다.</p>
         <p class="l-en">A youth group where Deaf young people lead efforts to expand rights and social participation. Through domestic and international exchange, culture and education activities, it supports the growth and solidarity of Deaf youth and young adults.</p>
         
@@ -1174,7 +1175,7 @@
       <div class="card">
         <span class="booth-no">BOOTH 12</span>
         <h3 class="l-ko">강이, 원이와 함께 놀아요</h3>
-        <h3 class="l-en">Play with Gang-i and Won-i</h3>
+        <h3 class="l-en">Let's play with Kang and Won!</h3>
         
         <p class="sub l-ko">강원도수어문화원</p><p class="sub l-en">Gangwon Sign Language Culture Center</p>
         <p class="l-ko">퍼즐을 맞추며 쉽고 재미있게 수어 단어를 익히는 참여형 체험 프로그램입니다. QR코드를 통해 다양한 수어 영상과 학습 콘텐츠를 만나며 일상 속 수어와 더욱 가까워질 수 있습니다.</p>
@@ -1189,10 +1190,10 @@
   <div class="deco" style="width:200px; height:200px; left:-40px; bottom:40px;"><svg><use href="#s-arch"/></svg></div>
   <div class="wrap">
     <span class="kicker l-ko">04 <span class="nb">슬램·공연</span></span>
-    <span class="kicker l-en">04 SLAM & PERFORMANCE</span>
+    <span class="kicker l-en">04 PERFORMANCE&SLAM</span>
     
     <h2 class="sec-title l-ko">슬램과 공연</h2>
-    <h2 class="sec-title l-en">Slam & Performance</h2>
+    <h2 class="sec-title l-en">Performance&Slam</h2>
     
     <p class="sec-desc l-ko">순간의 생각을 겨루는 수어 슬램, 수어로 창작한 문학을 무대에서 만나는 공연입니다.</p>
     <p class="sec-desc l-en">A sign language slam where ideas face off in the moment, and a performance where sign-language literature comes to life on stage.</p>
@@ -1204,9 +1205,9 @@
         <div>
           <span class="ws-num l-ko">슬램</span><span class="ws-num l-en">Slam</span>
           <h3 class="l-ko">〈웰컴 투 데프 월드〉 슬램</h3>
-          <h3 class="l-en">Welcome to Deaf World Slam</h3>
+          <h3 class="l-en">Welcome to the Deaf World Slam</h3>
           
-          <p class="sub l-ko">수어민들레</p><p class="sub l-en">Sueo Mindeulle</p>
+          <p class="sub l-ko">수어민들레</p><p class="sub l-en">Sign Language Dandelion</p>
           <p class="keyline l-ko">주어진 주제를 보고 순간적으로 생각을 정리하는 사고력과 순발력, 자신의 주장을 설득력 있게 전달하는 논리력을 겨루는 수어 대결입니다.</p>
           <p class="keyline l-en">A sign language contest of instant thinking that tests the ability to organize ideas quickly, the agility to respond, and the logic to deliver your argument persuasively.</p>
           
@@ -1227,9 +1228,9 @@
         <div>
           <span class="ws-num l-ko">공연</span><span class="ws-num l-en">Performance</span>
           <h3 class="l-ko">〈웰컴 투 데프 월드〉 수어문학 공연</h3>
-          <h3 class="l-en">Welcome to Deaf World Sign Literature Performance</h3>
+          <h3 class="l-en">Welcome to the Deaf World Sign Literature Performance</h3>
           
-          <p class="sub l-ko">수어민들레</p><p class="sub l-en">Sueo Mindeulle</p>
+          <p class="sub l-ko">수어민들레</p><p class="sub l-en">Sign Language Dandelion</p>
           <p class="keyline l-ko">아직은 낯설지만 어딘가 익숙한 수어문학. 직접 눈으로 보고 느끼며 그 매력을 발견할 수 있는 공연입니다.</p>
           <p class="keyline l-en">Sign literature may feel unfamiliar yet somehow familiar. It is a performance where you can see it with your own eyes, feel it, and discover its appeal.</p>
           
@@ -1257,8 +1258,8 @@
     <p style="margin-top:16px;">서로 다른 이야기가 모여 우리 모두의 이야기가 되는 시간.</p>
   </div>
   <div class="l-en">
-    <p class="big">Modu Story Camp</p>
-    <p>2026 Disability Arts Week · Modu Story Camp · Modu Art Theater</p>
+    <p class="big">Modu-Story Camp</p>
+    <p>2026 Disability Arts Week · Modu-Story Camp · Modu Art Theater</p>
     <p style="margin-top:16px;">Different stories gather to become our shared story.</p>
   </div>
   
