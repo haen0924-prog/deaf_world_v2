@@ -387,10 +387,14 @@
   }
   @media (max-width: 640px) {
     section { padding: 76px 0; }
-    .topbar .wrap { flex-direction: column; align-items: stretch; gap: 10px; }
-    .topmid { flex-direction: column; align-items: stretch; gap: 10px; }
-    .lang-switch { justify-content: flex-end; }
-    .topnav { padding-bottom: 4px; }
+    .topbar .wrap { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 6px; padding: 0 12px; }
+    .brand-wrap { flex: 1 1 auto; min-width: 0; }
+    .brand { font-size: 14px; line-height: 1.2; white-space: normal; display: block; }
+    .topmid { flex-direction: row; align-items: center; gap: 5px; flex: 0 0 auto; justify-content: flex-end; }
+    .topnav { overflow: visible; flex: 0 0 auto; }
+    .pill { font-size: 12.5px; padding: 6px 10px; border-width: 1.5px; }
+    .lang-switch { justify-content: flex-end; gap: 4px; }
+    .lang-switch button { font-size: 12px; padding: 6px 9px; border-width: 1.5px; }
     .info-grid { grid-template-columns: 1fr; }
     .info-item { border-right: none; border-bottom: 2px solid #3a3a3a; }
     .info-item:last-child { border-bottom: none; }
@@ -584,7 +588,7 @@
     <div class="brand-wrap">
       <a class="brand" href="#top">
       <span class="l-ko">웰컴 투 <span>데프 월드</span></span>
-      <span class="l-en">Welcome to <span>Deaf World</span></span>
+      <span class="l-en">Welcome to the <span>Deaf World</span></span>
       
     </a>
       <div class="brand-video"><video src="videos/welcome-deaf-world.mp4" muted loop playsinline preload="metadata"></video></div>
