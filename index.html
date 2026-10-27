@@ -258,7 +258,8 @@
   .booth-grid .card h3 { font-size: 19px; }
   .booth-grid .card .sub { font-size: 14px; margin-bottom: 10px; }
   .booth-grid .card p { font-size: 15px; }
-  .booth-grid .card .booth-pic { min-height: 0; width: 100%; max-width: 220px; aspect-ratio: 4 / 3; margin: 16px 0 0; border-radius: 14px; }
+  .booth-pic { min-height: 0; width: 100%; max-width: 220px; aspect-ratio: 4 / 3; margin: 16px 0 0; border-radius: 14px; }
+  .booth-pic img { height: 100%; object-fit: cover; }
   .booth-no {
     display: inline-block;
     font-weight: 900;
@@ -556,6 +557,7 @@
     .sd-big { font-size: 38px; line-height: 1.05; }
     .sd-sub { margin-top: 6px; font-size: 15px; }
   }
+  .mag-left .booth-pic { height: auto; min-height: 0; max-width: 220px; margin: 18px 0 0; }
 </style>
 </head>
 <body data-lang="ko">
@@ -1500,6 +1502,8 @@
       r.className = 'mag-right';
       textInto(l, p.a);
       if (p.b) textInto(r, p.b);
+      var pa = p.a.querySelector('.booth-pic'); if (pa) l.appendChild(pa.cloneNode(true));
+      if (p.b) { var pb = p.b.querySelector('.booth-pic'); if (pb) r.appendChild(pb.cloneNode(true)); }
       wrapIn(l); wrapIn(r);
     }
     return { l: l, r: r, sched: p.kind === 'sched' };
