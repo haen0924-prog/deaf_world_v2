@@ -487,7 +487,7 @@
     .mag-count { position: fixed; bottom: 42px; z-index: 210; }
   }
   /* ================= 책 안의 일정표 페이지 ================= */
-  .mag.sched-page .mag-left { background: var(--yellow); display: flex; flex-direction: column; justify-content: center; padding: 36px; min-height: 260px; }
+  .mag.sched-page .mag-left { background: var(--yellow); display: flex; flex-direction: column; justify-content: flex-start; padding: 44px; min-height: 260px; }
   .sd-big { font-family: "Nanum Pen Script", "Noto Sans KR", sans-serif; font-size: 72px; line-height: 1.1; white-space: nowrap; font-weight: 400; color: var(--ink); }
   @media (max-width: 760px) { .sd-big { font-size: 52px; } }
   .sd-sub { margin: 10px 0 0; font-weight: 900; font-size: 17px; color: var(--ink); }
@@ -508,8 +508,8 @@
   .mag-spread > .mag-left, .mag-spread > .mag-right { height: 100%; min-height: 0; display: flex; flex-direction: column; overflow-y: auto; }
   .mag-right { padding: 0; }
   .mag-left.text-page { padding: 0; }
-  .pg-in { margin: auto; width: 100%; box-sizing: border-box; padding: 44px; }
-  .mag-left.sched-left { justify-content: center; }
+  .pg-in { margin: 0 auto; width: 100%; box-sizing: border-box; padding: 44px; }
+  .mag-left.sched-left { justify-content: flex-start; padding: 44px; }
   .mag-left .img-box { height: 100%; }
   .mag-left.text-page { background: #fff; }
   .mag-left.text-page h3 { font-size: 34px; line-height: 1.2; margin: 0 0 10px; }
