@@ -504,8 +504,14 @@
   .mag-right .sr p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
   .mag-right .sr .nw { display: inline; }
   /* ================= 책장 넘김 (3D) ================= */
-  .mag-spread { perspective: 1600px; }
-  .mag-left.text-page { padding: 44px; overflow-y: auto; background: #fff; }
+  .mag-spread { perspective: 1600px; width: min(1100px, 100%); height: min(640px, calc(100vh - 80px)); max-height: none; }
+  .mag-spread > .mag-left, .mag-spread > .mag-right { height: 100%; min-height: 0; display: flex; flex-direction: column; overflow-y: auto; }
+  .mag-right { padding: 0; }
+  .mag-left.text-page { padding: 0; }
+  .pg-in { margin: auto; width: 100%; box-sizing: border-box; padding: 44px; }
+  .mag-left.sched-left { justify-content: center; }
+  .mag-left .img-box { height: 100%; }
+  .mag-left.text-page { background: #fff; }
   .mag-left.text-page h3 { font-size: 34px; line-height: 1.2; margin: 0 0 10px; }
   .mag-left.text-page .ws-num { display: inline-block; margin-bottom: 12px; }
   .mag-sheet { position: absolute; top: 0; bottom: 0; transform-style: preserve-3d; z-index: 3; pointer-events: none; }
@@ -519,7 +525,9 @@
   .sheet-face .sheet-stack { height: 100%; overflow: hidden; }
   .mag-shade { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 2; }
   @media (max-width: 760px) {
-    .mag-left.text-page { padding: 26px 22px; }
+    .mag-spread { height: auto; }
+    .mag-spread > .mag-left, .mag-spread > .mag-right { height: auto; overflow: visible; }
+    .pg-in { padding: 26px 22px; }
     .mag-left.text-page h3 { font-size: 26px; }
   }
 </style>
@@ -1445,19 +1453,28 @@
       r.className = 'mag-right';
       r.appendChild(rowsOf(ko, 'l-ko'));
       r.appendChild(rowsOf(en, 'l-en'));
+      wrapIn(r);
     } else if (p.kind === 'card') {
       var img = p.el.querySelector('.img-box');
       l.className = img ? 'mag-left' : 'mag-left text-page';
       if (img) l.appendChild(img.cloneNode(true));
       r.className = 'mag-right';
       textInto(r, p.el);
+      wrapIn(r);
     } else {
       l.className = 'mag-left text-page';
       r.className = 'mag-right';
       textInto(l, p.a);
       if (p.b) textInto(r, p.b);
+      wrapIn(l); wrapIn(r);
     }
     return { l: l, r: r, sched: p.kind === 'sched' };
+  }
+  function wrapIn(el) {
+    var w = document.createElement('div');
+    w.className = 'pg-in';
+    while (el.firstChild) w.appendChild(el.firstChild);
+    el.appendChild(w);
   }
   function setHalf(el, part) {
     el.className = part.className;
