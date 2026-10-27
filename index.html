@@ -561,6 +561,10 @@
   .pg-in:has(.booth-pic) { display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
   .pg-in:has(.booth-pic) .booth-no { align-self: flex-start; }
   .pg-in:has(.booth-pic) .booth-pic { height: auto; min-height: 0; align-self: center; margin: auto 0 0; max-width: 330px; border-radius: 4px; }
+  /* mobile booth list: one long page, booths stacked */
+  .booth-item { padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1.5px dashed #d9d4c7; }
+  .booth-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .booth-item .booth-pic { margin: 16px auto 0; }
 </style>
 </head>
 <body data-lang="ko">
@@ -1451,6 +1455,10 @@
       cards.forEach(function (c) { pages.push({ kind: 'card', el: c }); });
     }
   });
+  // mobile only: all 12 booths in one scrolling page
+  var boothAll = [].slice.call(src.querySelectorAll('#booth .card'));
+  var boothListIdx = pages.length;
+  pages.push({ kind: 'list', cards: boothAll });
   var ORDER = ['schedule'].concat(KEYS);
   ORDER.forEach(function (k, n) {
     end[k] = n + 1 < ORDER.length ? start[ORDER[n + 1]] : pages.length;
@@ -1482,6 +1490,20 @@
   // returns the left and right page of one spread
   function parts(p) {
     var l = document.createElement('div'), r = document.createElement('div');
+    if (p.kind === 'list') {
+      l.className = 'mag-left text-page';
+      r.className = 'mag-right';
+      p.cards.forEach(function (c) {
+        var w = document.createElement('div');
+        w.className = 'booth-item';
+        textInto(w, c);
+        var pic = c.querySelector('.booth-pic');
+        if (pic) w.appendChild(pic.cloneNode(true));
+        l.appendChild(w);
+      });
+      wrapIn(l);
+      return { l: l, r: r, sched: false, list: true };
+    }
     if (p.kind === 'sched') {
       var ko = koDays[p.i], en = src.querySelectorAll('.sched.l-en .day')[p.i];
       l.className = 'mag-left sched-left';
@@ -1526,6 +1548,7 @@
     var s = parts(pages[i]);
     setHalf(left, s.l);
     setHalf(right, s.r);
+    right.style.display = s.list ? 'none' : '';
     mag.classList.toggle('sched-page', s.sched);
     count.textContent = (i - lo + 1) + ' / ' + (hi - lo);
     left.scrollTop = 0; right.scrollTop = 0;
@@ -1597,7 +1620,11 @@
   }
 
   function open(key) {
-    lo = start[key]; hi = end[key];
+    if (key === 'booth' && window.matchMedia('(max-width: 760px)').matches) {
+      lo = boothListIdx; hi = boothListIdx + 1;
+    } else {
+      lo = start[key]; hi = end[key];
+    }
     cur = lo;
     show(cur);
     mag.classList.add('open');
