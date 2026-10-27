@@ -258,8 +258,8 @@
   .booth-grid .card h3 { font-size: 19px; }
   .booth-grid .card .sub { font-size: 14px; margin-bottom: 10px; }
   .booth-grid .card p { font-size: 15px; }
-  .booth-pic { min-height: 0; width: 100%; max-width: 330px; aspect-ratio: 4 / 3; margin: 16px 0 0; border-radius: 4px; }
-  .booth-pic img { height: 100%; object-fit: cover; }
+  .booth-pic { min-height: 160px; width: 100%; max-width: 330px; aspect-ratio: auto; margin: 16px 0 0; border-radius: 4px; }
+  .booth-pic img { height: auto; object-fit: contain; }
   .booth-no {
     display: inline-block;
     font-weight: 900;
@@ -560,11 +560,12 @@
   /* 부스 페이지: 글은 위에서부터, 사진은 하단 가운데 고정 (좌·우 페이지 동일) */
   .pg-in:has(.booth-pic) { display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
   .pg-in:has(.booth-pic) .booth-no { align-self: flex-start; }
-  .pg-in:has(.booth-pic) .booth-pic { height: auto; min-height: 0; align-self: center; margin: auto 0 0; max-width: 330px; border-radius: 4px; }
+  .pg-in:has(.booth-pic) .booth-pic { height: auto; min-height: 160px; align-self: center; margin: auto 0 0; max-width: 330px; border-radius: 4px; }
   /* mobile booth list: one long page, booths stacked */
   .booth-item { padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1.5px dashed #d9d4c7; }
   .booth-item:last-child { border-bottom: none; margin-bottom: 0; }
   .booth-item .booth-pic { margin: 16px auto 0; }
+  .booth-pic img, .mag-left .booth-pic img, .booth-item .booth-pic img { height: auto; object-fit: contain; }
 </style>
 </head>
 <body data-lang="ko">
