@@ -475,16 +475,16 @@
   .mag-close { position: absolute; top: 18px; right: 18px; width: 48px; height: 48px; border-radius: 50%; border: 2.5px solid #fff; background: transparent; color: #fff; font-size: 22px; font-weight: 900; cursor: pointer; }
   .mag-count { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); color: #fff; font-weight: 900; font-size: 14px; }
   @media (max-width: 760px) {
-    .mag { padding: 16px 10px 40px; align-items: flex-start; }
+    .mag { padding: 62px 10px 110px; align-items: flex-start; overflow-y: auto; -webkit-overflow-scrolling: touch; }
     .mag-spread { grid-template-columns: 1fr; max-height: none; width: 100%; margin-top: 52px; }
     .mag-spread::after { display: none; }
     .mag-left .img-box { min-height: 260px; height: 260px; }
     .mag-right { max-height: none; overflow: visible; padding: 26px 22px 30px; }
     .mag-right h3 { font-size: 26px; }
-    .mag-btn { width: 44px; height: 44px; font-size: 20px; top: auto; bottom: 14px; transform: none; }
-    .mag-btn.prev { left: 10px; } .mag-btn.next { right: 10px; }
-    .mag-close { top: 10px; right: 10px; }
-    .mag-count { bottom: 22px; }
+    .mag-btn { position: fixed; width: 52px; height: 52px; font-size: 22px; top: auto; bottom: 22px; transform: none; z-index: 210; }
+    .mag-btn.prev { left: 14px; } .mag-btn.next { right: 14px; }
+    .mag-close { position: fixed; top: 12px; right: 12px; z-index: 210; background: var(--ink); }
+    .mag-count { position: fixed; bottom: 42px; z-index: 210; }
   }
   /* ================= 책 안의 일정표 페이지 ================= */
   .mag.sched-page .mag-left { background: var(--yellow); display: flex; flex-direction: column; justify-content: center; padding: 36px; min-height: 260px; }
