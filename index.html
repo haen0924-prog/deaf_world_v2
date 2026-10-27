@@ -503,6 +503,25 @@
   .mag-right .sr h4 { margin: 8px 0 4px; font-size: 20px; font-weight: 900; line-height: 1.4; }
   .mag-right .sr p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
   .mag-right .sr .nw { display: inline; }
+  /* ================= 책장 넘김 (3D) ================= */
+  .mag-spread { perspective: 1600px; }
+  .mag-left.text-page { padding: 44px; overflow-y: auto; background: #fff; }
+  .mag-left.text-page h3 { font-size: 34px; line-height: 1.2; margin: 0 0 10px; }
+  .mag-left.text-page .ws-num { display: inline-block; margin-bottom: 12px; }
+  .mag-sheet { position: absolute; top: 0; bottom: 0; transform-style: preserve-3d; z-index: 3; pointer-events: none; }
+  .mag-sheet.right { left: 50%; right: 0; }
+  .mag-sheet.left { left: 0; right: 50%; }
+  .mag-sheet.full { left: 0; right: 0; }
+  .sheet-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; background: #fff; overflow: hidden; }
+  .sheet-face.back { transform: rotateY(180deg); }
+  .sheet-face.blank { background: #fbfaf6; }
+  .sheet-face > .mag-left, .sheet-face > .mag-right { height: 100%; max-height: none; }
+  .sheet-face .sheet-stack { height: 100%; overflow: hidden; }
+  .mag-shade { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 2; }
+  @media (max-width: 760px) {
+    .mag-left.text-page { padding: 26px 22px; }
+    .mag-left.text-page h3 { font-size: 26px; }
+  }
 </style>
 </head>
 <body data-lang="ko">
@@ -1370,23 +1389,28 @@
   var count = document.getElementById('magCount');
   var KEYS = ['exhibition', 'workshop', 'booth', 'slam-performance'];
 
-  // build the book: schedule pages first, then each program category
+  // ---- build the book: one entry per spread ----
   var pages = [], start = {}, end = {};
   var koDays = src.querySelectorAll('.sched.l-ko .day');
   start['schedule'] = 0;
   for (var d = 0; d < koDays.length; d++) pages.push({ kind: 'sched', i: d });
   KEYS.forEach(function (k) {
     start[k] = pages.length;
-    [].forEach.call(src.querySelectorAll('#' + k + ' .card'), function (c) {
-      pages.push({ kind: 'card', el: c });
-    });
+    var cards = [].slice.call(src.querySelectorAll('#' + k + ' .card'));
+    if (k === 'booth') {
+      // booths have no photos: two booths per spread (left = first, right = second)
+      for (var j = 0; j < cards.length; j += 2) pages.push({ kind: 'pair', a: cards[j], b: cards[j + 1] || null });
+    } else {
+      cards.forEach(function (c) { pages.push({ kind: 'card', el: c }); });
+    }
   });
   var ORDER = ['schedule'].concat(KEYS);
   ORDER.forEach(function (k, n) {
     end[k] = n + 1 < ORDER.length ? start[ORDER[n + 1]] : pages.length;
   });
-  var lo = 0, hi = pages.length;
+  var lo = 0, hi = pages.length, cur = 0, busy = false, startX = null;
 
+  // ---- building blocks ----
   function rowsOf(day, cls) {
     var wrap = document.createElement('div');
     wrap.className = cls;
@@ -1403,45 +1427,121 @@
     });
     return wrap;
   }
-
-  function schedPage(i) {
-    var ko = src.querySelectorAll('.sched.l-ko .day')[i];
-    var en = src.querySelectorAll('.sched.l-en .day')[i];
-    var head = document.createElement('div');
-    head.innerHTML =
-      '<div class="sd-big l-ko">' + ko.querySelector('.day-h').innerHTML + '</div>' +
-      '<div class="sd-big l-en">' + en.querySelector('.day-h').innerHTML + '</div>' +
-      '<p class="sd-sub l-ko">전체 프로그램 일정표</p><p class="sd-sub l-en">Full Program Schedule</p>';
-    left.appendChild(head);
-    right.appendChild(rowsOf(ko, 'l-ko'));
-    right.appendChild(rowsOf(en, 'l-en'));
+  function textInto(target, card) {
+    [].forEach.call(card.children, function (el) {
+      if (!el.classList.contains('img-box')) target.appendChild(el.cloneNode(true));
+    });
   }
-
-  function fill(i) {
-    var p = pages[i];
-    left.innerHTML = ''; right.innerHTML = '';
+  // returns the left and right page of one spread
+  function parts(p) {
+    var l = document.createElement('div'), r = document.createElement('div');
     if (p.kind === 'sched') {
-      mag.classList.add('sched-page');
-      mag.classList.remove('no-img');
-      schedPage(p.i);
+      var ko = koDays[p.i], en = src.querySelectorAll('.sched.l-en .day')[p.i];
+      l.className = 'mag-left sched-left';
+      l.innerHTML =
+        '<div class="sd-big l-ko">' + ko.querySelector('.day-h').innerHTML + '</div>' +
+        '<div class="sd-big l-en">' + en.querySelector('.day-h').innerHTML + '</div>' +
+        '<p class="sd-sub l-ko">전체 프로그램 일정표</p><p class="sd-sub l-en">Full Program Schedule</p>';
+      r.className = 'mag-right';
+      r.appendChild(rowsOf(ko, 'l-ko'));
+      r.appendChild(rowsOf(en, 'l-en'));
+    } else if (p.kind === 'card') {
+      var img = p.el.querySelector('.img-box');
+      l.className = img ? 'mag-left' : 'mag-left text-page';
+      if (img) l.appendChild(img.cloneNode(true));
+      r.className = 'mag-right';
+      textInto(r, p.el);
     } else {
-      mag.classList.remove('sched-page');
-      var c = p.el, img = c.querySelector('.img-box');
-      if (img) { left.appendChild(img.cloneNode(true)); mag.classList.remove('no-img'); }
-      else { mag.classList.add('no-img'); }
-      [].forEach.call(c.children, function (el) {
-        if (el !== img) right.appendChild(el.cloneNode(true));
-      });
+      l.className = 'mag-left text-page';
+      r.className = 'mag-right';
+      textInto(l, p.a);
+      if (p.b) textInto(r, p.b);
     }
+    return { l: l, r: r, sched: p.kind === 'sched' };
+  }
+  function setHalf(el, part) {
+    el.className = part.className;
+    el.innerHTML = '';
+    while (part.firstChild) el.appendChild(part.firstChild);
+  }
+  function show(i) {
+    var s = parts(pages[i]);
+    setHalf(left, s.l);
+    setHalf(right, s.r);
+    mag.classList.toggle('sched-page', s.sched);
     count.textContent = (i - lo + 1) + ' / ' + (hi - lo);
-    right.scrollTop = 0;
+    left.scrollTop = 0; right.scrollTop = 0;
   }
 
-  var cur = 0, busy = false, startX = null;
+  // ---- page turn: the sheet hinges on the spine and turns over ----
+  function turn(dir) {
+    var next = cur + dir;
+    if (busy || next < lo || next >= hi) return;
+    busy = true;
+    var A = parts(pages[cur]), B = parts(pages[next]);
+    var mobile = window.matchMedia('(max-width: 760px)').matches;
+    var sheet = document.createElement('div');
+    var face = document.createElement('div');
+    var back = document.createElement('div');
+    var shade = document.createElement('div');
+    sheet.className = 'mag-sheet';
+    face.className = 'sheet-face front';
+    back.className = 'sheet-face back';
+    shade.className = 'mag-shade';
+    var origin, to;
+    if (mobile) {
+      // single-column: the whole page turns away, the next page is underneath
+      var stack = document.createElement('div');
+      stack.className = 'sheet-stack';
+      stack.appendChild(A.l.cloneNode(true));
+      stack.appendChild(A.r.cloneNode(true));
+      face.appendChild(stack);
+      back.className += ' blank';
+      sheet.classList.add('full');
+      setHalf(left, B.l);
+      setHalf(right, B.r);
+      origin = dir > 0 ? 'left' : 'right';
+      to = dir > 0 ? -180 : 180;
+    } else if (dir > 0) {
+      // right page lifts over the spine; its reverse shows the next left page
+      sheet.classList.add('right');
+      face.appendChild(A.r.cloneNode(true));
+      back.appendChild(B.l.cloneNode(true));
+      setHalf(left, A.l);
+      setHalf(right, B.r);
+      origin = 'left'; to = -180;
+    } else {
+      // left page lifts over the spine; its reverse shows the previous right page
+      sheet.classList.add('left');
+      face.appendChild(A.l.cloneNode(true));
+      back.appendChild(B.r.cloneNode(true));
+      setHalf(left, B.l);
+      setHalf(right, A.r);
+      origin = 'right'; to = 180;
+    }
+    sheet.style.transformOrigin = origin + ' center';
+    sheet.appendChild(face);
+    sheet.appendChild(back);
+    spread.appendChild(shade);
+    spread.appendChild(sheet);
+    var D = 820;
+    var anim = sheet.animate(
+      [{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(' + to + 'deg)' }],
+      { duration: D, easing: 'cubic-bezier(.45,.05,.3,1)', fill: 'forwards' });
+    shade.animate([{ opacity: 0 }, { opacity: 0.32, offset: 0.5 }, { opacity: 0 }], { duration: D, easing: 'linear' });
+    anim.onfinish = function () {
+      cur = next;
+      show(cur);
+      sheet.remove();
+      shade.remove();
+      busy = false;
+    };
+  }
+
   function open(key) {
     lo = start[key]; hi = end[key];
     cur = lo;
-    fill(cur);
+    show(cur);
     mag.classList.add('open');
     document.body.style.overflow = 'hidden';
     history.replaceState(null, '', '#book-' + key);
@@ -1450,22 +1550,6 @@
     mag.classList.remove('open');
     document.body.style.overflow = '';
     history.replaceState(null, '', location.pathname + location.search);
-  }
-  function go(dir) {
-    if (busy) return;
-    var next = cur + dir;
-    if (next < lo || next >= hi) return;
-    busy = true;
-    spread.classList.remove('in', 'back');
-    spread.classList.add('out');
-    if (dir < 0) spread.classList.add('back');
-    setTimeout(function () {
-      cur = next; fill(cur);
-      spread.classList.remove('out');
-      spread.classList.add('in');
-      if (dir < 0) spread.classList.add('back');
-      setTimeout(function () { spread.classList.remove('in', 'back'); busy = false; }, 320);
-    }, 230);
   }
 
   // every button or poster hotspot that points to #book-<key> opens the book there
@@ -1479,20 +1563,20 @@
     open(key);
   });
   document.getElementById('magClose').onclick = close;
-  document.getElementById('magPrev').onclick = function () { go(-1); };
-  document.getElementById('magNext').onclick = function () { go(1); };
+  document.getElementById('magPrev').onclick = function () { turn(-1); };
+  document.getElementById('magNext').onclick = function () { turn(1); };
   mag.addEventListener('click', function (e) { if (e.target === mag) close(); });
   document.addEventListener('keydown', function (e) {
     if (!mag.classList.contains('open')) return;
     if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') go(-1);
-    if (e.key === 'ArrowRight') go(1);
+    if (e.key === 'ArrowLeft') turn(-1);
+    if (e.key === 'ArrowRight') turn(1);
   });
   mag.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
   mag.addEventListener('touchend', function (e) {
     if (startX === null) return;
     var dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    if (Math.abs(dx) > 50) turn(dx < 0 ? 1 : -1);
     startX = null;
   }, { passive: true });
 
