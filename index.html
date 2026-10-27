@@ -1470,6 +1470,7 @@
 
   // every button or poster hotspot that points to #book-<key> opens the book there
   document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return; // first tap on a poster button only shows its video
     var a = e.target.closest && e.target.closest('a[href^="#book-"]');
     if (!a) return;
     var key = a.getAttribute('href').slice(6);
