@@ -258,7 +258,7 @@
   .booth-grid .card h3 { font-size: 19px; }
   .booth-grid .card .sub { font-size: 14px; margin-bottom: 10px; }
   .booth-grid .card p { font-size: 15px; }
-  .booth-pic { min-height: 0; width: 100%; max-width: 330px; aspect-ratio: 4 / 3; margin: 16px 0 0; border-radius: 2px; }
+  .booth-pic { min-height: 0; width: 100%; max-width: 330px; aspect-ratio: 4 / 3; margin: 16px 0 0; border-radius: 4px; }
   .booth-pic img { height: 100%; object-fit: cover; }
   .booth-no {
     display: inline-block;
@@ -557,8 +557,10 @@
     .sd-big { font-size: 38px; line-height: 1.05; }
     .sd-sub { margin-top: 6px; font-size: 15px; }
   }
-  .mag-left .pg-in { display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
-  .mag-left .booth-pic { height: auto; min-height: 0; max-width: 330px; margin: auto auto 0; border-radius: 2px; }
+  /* 부스 페이지: 글은 위에서부터, 사진은 하단 가운데 고정 (좌·우 페이지 동일) */
+  .pg-in:has(.booth-pic) { display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
+  .pg-in:has(.booth-pic) .booth-no { align-self: flex-start; }
+  .pg-in:has(.booth-pic) .booth-pic { height: auto; min-height: 0; align-self: center; margin: auto 0 0; max-width: 330px; border-radius: 4px; }
 </style>
 </head>
 <body data-lang="ko">
